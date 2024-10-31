@@ -1,19 +1,23 @@
-plugins {
-    id("java")
-}
-
-group = "dev.josemoncab"
 version = "${project.property("version")}"
 
-repositories {
-    mavenCentral()
+allprojects {
+    tasks {
+        withType<JavaCompile> {
+            options.encoding = "UTF-8"
+        }
+    }
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-tasks.test {
-    useJUnitPlatform()
+tasks {
+    register("build") {
+        dependsOn(":clean")
+        dependsOn(":server:build")
+        dependsOn(":client:build")
+    }
+    register("clean", Delete::class) {
+        delete("${rootProject.projectDir}/build")
+        dependsOn(":server:clean")
+        dependsOn(":client:clean")
+        dependsOn(":core:clean")
+    }
 }
