@@ -1,8 +1,9 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    id("java")
+    id("application")
     alias(libs.plugins.shadow)
+    alias(libs.plugins.javafx)
 }
 
 dependencies {
@@ -24,4 +25,13 @@ tasks {
 
         }
     }
+}
+
+application {
+    mainClass.set("dev.josemoncab.BigBox-Client")
+}
+
+javafx {
+    version = "21"
+    modules = listOf("javafx.controls", "javafx.fxml")
 }

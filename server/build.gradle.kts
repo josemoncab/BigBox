@@ -1,7 +1,7 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    id("java")
+    id("application")
     alias(libs.plugins.shadow)
 }
 
@@ -23,4 +23,8 @@ tasks {
             }
         }
     }
+}
+
+application {
+    mainClass.set("dev.josemoncab.BigBox-Server")
 }

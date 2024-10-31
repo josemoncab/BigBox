@@ -3,6 +3,7 @@ metadata.format.version = "1.1"
 [versions]
 # Gradle plugins
 shadow = "8.3.4"
+javafx = "0.1.0"
 
 [libraries]
 
@@ -10,3 +11,4 @@ shadow = "8.3.4"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+javafx = {id = "org.openjfx.javafxplugin", version.ref = "javafx"}
